@@ -1,8 +1,11 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import { theme } from "../styles/theme";
+import { useSelector,} from 'react-redux'
+
 import Sidebar from "../components/editor/Sidebar";
 import Site from "../components/editor/Site";
+import ModalWindow from "../components/editor/Modal";
 
 // Component Styles
 
@@ -32,7 +35,7 @@ const SiteWrapper = styled(motion.div)`
   overflow: hidden;
   border: 1px solid ${theme.colors.black[40]};
   border-radius: 8px;
-  background-color: ${theme.colors.black[10]}; // Change to Primary color
+  background-color: ${props=> props.color.primary}; // Change to Primary color
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,10 +48,12 @@ const SideBarWrapper = styled(motion.div)`
 
 /** Root Editor View */
 function Editor() {
+  const colors = useSelector((state) => state.colors)
   return (
     <Root>
       <RootContent>
-        <SiteWrapper layout>
+        <SiteWrapper color={colors} layout>
+          <ModalWindow/>
           <Site />
         </SiteWrapper>
         <SideBarWrapper layout>

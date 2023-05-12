@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../styles/theme";
+import { useSelector } from "react-redux";
 
 const Root = styled.div`
   max-width: 600px;
@@ -11,29 +12,32 @@ const Root = styled.div`
 const SiteTitle = styled.h1`
   font-size: 24px;
   font-weight: 500;
-  color: ${theme.colors.black[100]}; // Change to Secondary color
+  color: ${props => props.color.secondary};
+  /* color: ${theme.colors.black[100]}; // Change to Secondary color */
   margin-bottom: 12px;
 `;
 
 const SiteDescription = styled.p`
   font-size: 16px;
   font-weight: 400;
-  color: ${theme.colors.black[80]}; // Change to Tertiary color
+  color: ${props => props.color};
 `;
 
 const DocLink = styled.a`
   text-decoration: none;
   font-weight: 500;
-  color: ${theme.colors.black[100]}; // Change to Secondary color
+  color: ${({color}) => color.secondary};
   margin-top: 12px;
 `;
 
 /** Site preview for the Editor page */
-function Site(props) {
+function Site() {
+  const colors = useSelector((state) => state.colors)
+
   return (
     <Root>
-      <SiteTitle>StyleAI Frontend Interview ⭐️</SiteTitle>
-      <SiteDescription>
+      <SiteTitle color={colors}>StyleAI Frontend Interview ⭐️</SiteTitle>
+      <SiteDescription color={colors.tertiary}>
         Congratulations on making it to the coding interview for the frontend
         developer internship at StyleAI! In this task, you will be developing a
         'styles' menu in the sidebar of a website editor. This menu will allow
@@ -41,7 +45,7 @@ function Site(props) {
         documentation aims to provide you with all the necessary information to
         complete the task successfully.
       </SiteDescription>
-      <SiteDescription>
+      <SiteDescription color={colors.tertiary}>
         This task is designed to test your ability to work with React
         components, manage state variables, and utilize local storage. We wish
         you the best of luck in completing this task and look forward to
@@ -50,6 +54,7 @@ function Site(props) {
       <DocLink
         target="_blank"
         href="https://github.com/tapp-ai/tapp-frontend-interview#readme"
+        color={colors}
       >
         Read Task Documentation
       </DocLink>
