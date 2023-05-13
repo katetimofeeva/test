@@ -67,7 +67,7 @@ function Editor() {
   const pickerColor = Object.entries(palitre).map(([circleName, isOpen]) => {
     if (isOpen) {
 
-    const color = Object.entries(colors)[circleName];
+    const color = Object.entries(colors);
 
       return (
         <MySketchPicker
