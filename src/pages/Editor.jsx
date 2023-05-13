@@ -10,7 +10,6 @@ import ModalWindow from "../components/editor/Modal";
 import { CHOOSE_COLOR_THEME } from "../redux/constant";
 
 // Component Styles
-
 const Root = styled.div`
   width: 100%;
   height: 100%;
@@ -21,7 +20,6 @@ const Root = styled.div`
   overflow-x: hidden;
   overflow-y: hidden;
 `;
-
 const RootContent = styled.div`
   height: 100%;
   width: 100%;
@@ -29,7 +27,6 @@ const RootContent = styled.div`
   transition: height 100ms linear;
   padding: 32px;
 `;
-
 const SiteWrapper = styled(motion.div)`
   flex: 1;
   height: 100%;
@@ -42,7 +39,6 @@ const SiteWrapper = styled(motion.div)`
   align-items: center;
   justify-content: center;
 `;
-
 const SideBarWrapper = styled(motion.div)`
   width: 64px;
   height: 100%;
@@ -95,5 +91,4 @@ function Editor() {
     </Root>
   );
 }
-
 export default Editor;

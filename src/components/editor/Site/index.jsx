@@ -1,33 +1,28 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-
 const Root = styled.div`
   max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 `;
-
 const SiteTitle = styled.h1`
   font-size: 24px;
   font-weight: 500;
   color: ${props => props.color.secondary};
   margin-bottom: 12px;
 `;
-
 const SiteDescription = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: ${props => props.color};
 `;
-
 const DocLink = styled.a`
   text-decoration: none;
   font-weight: 500;
   color: ${({color}) => color.secondary};
   margin-top: 12px;
 `;
-
 /** Site preview for the Editor page */
 function Site() {
   const colors = useSelector((state) => state.colors)
@@ -59,5 +54,4 @@ function Site() {
     </Root>
   );
 }
-
 export default Site;

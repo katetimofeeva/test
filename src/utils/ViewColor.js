@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useSelector, useDispatch } from 'react-redux'
-
 import {siteThemes} from '../constants/siteThemes'
 import { useEffect } from "react";
 import {CHOOSE_COLOR, SHOW_COLORS} from '../redux/constant'
@@ -21,12 +20,10 @@ const Circle = styled.div`
 
 function ViewColor () {
     const dispatch = useDispatch()
-
     const theme = useSelector((state) => state.nameTheme)
     useEffect(()=>{
         dispatch({type: CHOOSE_COLOR, payload: siteThemes[theme]})
     },[theme, dispatch])
-
     const selectedTheme = useSelector((state) => state.colors)
     const colors = Object.entries(selectedTheme)
 
