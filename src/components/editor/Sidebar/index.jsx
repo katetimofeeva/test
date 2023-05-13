@@ -2,9 +2,8 @@ import styled from "styled-components";
 import StyleIcon from '@mui/icons-material/Style';
 import { useSelector, useDispatch } from 'react-redux'
 import { createTheme } from '@mui/material/styles';
-
+import {TOGGLE_MODAL} from '../../../redux/constant'
 // Component Styles
-
 const Root = styled.div`
   height: 100%;
   width: 100%;
@@ -34,7 +33,7 @@ function Sidebar() {
   const theme = createTheme({ colors});
 
   function handleClick (){
-    dispatch({type: 'TOGGLE_MODAL'})
+    dispatch({type: TOGGLE_MODAL})
   }
 
   return( 
@@ -47,5 +46,4 @@ function Sidebar() {
   </Root>
   )
 }
-
 export default Sidebar;

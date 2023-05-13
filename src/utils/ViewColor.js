@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useSelector, useDispatch } from 'react-redux'
-
 import {siteThemes} from '../constants/siteThemes'
 import { useEffect } from "react";
+import {CHOOSE_COLOR, SHOW_COLORS} from '../redux/constant'
 
 const Wraper = styled.div`
     margin-top: 4%;
@@ -20,19 +20,20 @@ const Circle = styled.div`
 
 function ViewColor () {
     const dispatch = useDispatch()
-
     const theme = useSelector((state) => state.nameTheme)
     useEffect(()=>{
-        dispatch({type: 'CHOOSE_COLOR', payload: siteThemes[theme]})
+        dispatch({type: CHOOSE_COLOR, payload: siteThemes[theme]})
     },[theme, dispatch])
-
     const selectedTheme = useSelector((state) => state.colors)
-    const colors = Object.values(selectedTheme)
+    const colors = Object.entries(selectedTheme)
+    function handleClick(e, colorName) {
+        dispatch({ type: SHOW_COLORS, payload: { colorName, isOpen: true } });
+    }
     
     return (
         <Wraper>
-        {colors.map((color, i)=> {
-            return  <Circle backgroundColor={color} key={color+i} />
+        {colors.map((color, index)=> {
+            return  <Circle backgroundColor={color[1]} key={color+index} onClick={(e)=>handleClick(e, color[0])}/>
         })}
         </Wraper>
     ) 
