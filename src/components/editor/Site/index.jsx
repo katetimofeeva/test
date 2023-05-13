@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 const Root = styled.div`
@@ -27,6 +26,7 @@ const DocLink = styled.a`
 /** Site preview for the Editor page */
 function Site() {
   const colors = useSelector((state) => state.colors)
+
   return (
     <Root>
       <SiteTitle color={colors}>StyleAI Frontend Interview ⭐️</SiteTitle>

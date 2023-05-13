@@ -1,4 +1,3 @@
-
 import {siteThemes} from '../constants/siteThemes'
 import {
     CHOOSE_COLOR, 
@@ -49,4 +48,6 @@ function reducer (state = initialState, action){
         return state
     }
 }
+
 export default reducer
+

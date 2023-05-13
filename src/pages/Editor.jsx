@@ -7,6 +7,7 @@ import Sidebar from "../components/editor/Sidebar";
 import Site from "../components/editor/Site";
 import ModalWindow from "../components/editor/Modal/ModalWindow";
 import { CHOOSE_COLOR_THEME } from "../redux/constant";
+
 // Component Styles
 const Root = styled.div`
   width: 100%;
@@ -49,6 +50,7 @@ const MySketchPicker = styled(SketchPicker)`
 /** Root Editor View */
 function Editor() {
   const colors = useSelector((state) => state.colors)
+
   const palitre = useSelector((state) => state.palitra)
   const dispatch = useDispatch()
   function handleChangeComplete(color,  circleName){
@@ -67,6 +69,7 @@ function Editor() {
     }
     return null;
   })
+
   return (
     <Root>
       <RootContent>

@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import StyleIcon from '@mui/icons-material/Style';
 import { useSelector, useDispatch } from 'react-redux'
@@ -24,6 +23,7 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
 `
+
 /** Sidebar view of the Editor page */
 function Sidebar() {
   const dispatch = useDispatch()
@@ -31,9 +31,11 @@ function Sidebar() {
   const toggle = useSelector((state) => state.toggleModal)
   
   const theme = createTheme({ colors});
+
   function handleClick (){
     dispatch({type: TOGGLE_MODAL})
   }
+
   return( 
   <Root>
     <WrapIcon >

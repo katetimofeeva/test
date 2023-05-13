@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {siteThemes} from '../constants/siteThemes'
 import { useEffect } from "react";
 import {CHOOSE_COLOR, SHOW_COLORS} from '../redux/constant'
+
 const Wraper = styled.div`
     margin-top: 4%;
     width: 70%;
@@ -16,6 +17,7 @@ const Circle = styled.div`
     border-radius: 50%;
     background-color: ${props => props.backgroundColor || null};
 `;
+
 function ViewColor () {
     const dispatch = useDispatch()
     const theme = useSelector((state) => state.nameTheme)
@@ -36,4 +38,5 @@ function ViewColor () {
         </Wraper>
     ) 
 }
+
 export default ViewColor
