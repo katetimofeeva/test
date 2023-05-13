@@ -3,6 +3,7 @@ import { Select, MenuItem} from '@mui/material';
 import {useSelector, useDispatch } from 'react-redux'
 
 import {siteThemes} from '../constants/siteThemes'
+import {CHOOSE_THEME} from '../redux/constant'
 
 const StyledSelect = styled(Select)`
     width: ${({width}) => width || '200px'};
@@ -20,7 +21,7 @@ function SelectedTheme (){
     const arr1 = Object.entries(siteThemes)
 
     function handleChange(e){
-        dispatch({type: 'CHOOSE_THEME', payload: e.target.value})
+        dispatch({type: CHOOSE_THEME, payload: e.target.value})
     }
 
     return (

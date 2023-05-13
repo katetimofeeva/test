@@ -26,6 +26,7 @@ function ViewColor () {
     },[theme, dispatch])
     const selectedTheme = useSelector((state) => state.colors)
     const colors = Object.entries(selectedTheme)
+
     function handleClick(e, colorName) {
         dispatch({ type: SHOW_COLORS, payload: { colorName, isOpen: true } });
     }

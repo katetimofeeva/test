@@ -5,6 +5,7 @@ import {
     TOGGLE_MODAL, 
     SHOW_COLORS, 
     CHOOSE_COLOR_THEME} from './constant'
+
 const initialState={
     toggleModal: false,
     nameTheme: 'default',

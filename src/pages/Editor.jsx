@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import { theme } from "../styles/theme";
 import { useSelector, useDispatch} from 'react-redux'
 import { SketchPicker } from 'react-color'
+
 import Sidebar from "../components/editor/Sidebar";
 import Site from "../components/editor/Site";
-import ModalWindow from "../components/editor/Modal/ModalWindow";
+import ModalWindow from "../components/editor/Modal";
 import { CHOOSE_COLOR_THEME } from "../redux/constant";
 
 // Component Styles
@@ -47,18 +48,23 @@ const MySketchPicker = styled(SketchPicker)`
   position: absolute;
   right: 40%
 `
+
 /** Root Editor View */
 function Editor() {
   const colors = useSelector((state) => state.colors)
-
   const palitre = useSelector((state) => state.palitra)
+
   const dispatch = useDispatch()
+
   function handleChangeComplete(color,  circleName){
     dispatch({type: CHOOSE_COLOR_THEME, payload: {circleName, color: color.hex}})
   }
+
   const pickerColor = Object.entries(palitre).map(([circleName, isOpen]) => {
     if (isOpen) {
-    const color = Object.entries(colors)[circleName];
+
+    const color = Object.entries(colors);
+
       return (
         <MySketchPicker
           key={circleName}
