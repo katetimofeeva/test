@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { theme } from "../../../styles/theme";
 import { useSelector } from "react-redux";
 
 const Root = styled.div`
@@ -13,7 +12,6 @@ const SiteTitle = styled.h1`
   font-size: 24px;
   font-weight: 500;
   color: ${props => props.color.secondary};
-  /* color: ${theme.colors.black[100]}; // Change to Secondary color */
   margin-bottom: 12px;
 `;
 
