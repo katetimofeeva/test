@@ -1,4 +1,3 @@
-
 import { Box, Typography} from '@mui/material';
 import styled from "styled-components";
 import { useSelector } from 'react-redux'
@@ -18,9 +17,11 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
+
 const MyBox = styled(Box)`
     display: ${props => props.toggle ? 'block' : 'none'};
 `;
+
 function ModalWindow (){
     const toggle = useSelector((state) => state.toggleModal)
     return (

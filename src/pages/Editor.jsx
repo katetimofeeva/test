@@ -1,13 +1,14 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
-import { theme } from "../styles/theme";
 import { useSelector, useDispatch} from 'react-redux'
 import { SketchPicker } from 'react-color'
 
+import { theme } from "../styles/theme";
 import Sidebar from "../components/editor/Sidebar";
 import Site from "../components/editor/Site";
-import ModalWindow from "../components/editor/Modal";
-import { CHOOSE_COLOR_THEME } from "../redux/constant";
+import ModalWindow from "../components/editor/Modal/ModalWindow";
+import { CHOOSE_COLOR_THEME } from '../redux/constant';
+import useGetState from "../hook/useGetState";
 
 // Component Styles
 const Root = styled.div`
@@ -34,7 +35,7 @@ const SiteWrapper = styled(motion.div)`
   overflow: hidden;
   border: 1px solid ${theme.colors.black[40]};
   border-radius: 8px;
-  background-color: ${props=> props.color.primary}; // Change to Primary color
+  background-color: ${props=> props.color}; // Change to Primary color
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,23 +49,17 @@ const MySketchPicker = styled(SketchPicker)`
   position: absolute;
   right: 40%
 `
-
 /** Root Editor View */
 function Editor() {
-  const colors = useSelector((state) => state.colors)
   const palitre = useSelector((state) => state.palitra)
-
+  const [name, theme]= useGetState('nameTheme', 'theme')
   const dispatch = useDispatch()
-
   function handleChangeComplete(color,  circleName){
     dispatch({type: CHOOSE_COLOR_THEME, payload: {circleName, color: color.hex}})
   }
-
   const pickerColor = Object.entries(palitre).map(([circleName, isOpen]) => {
     if (isOpen) {
-
-    const color = Object.entries(colors);
-
+    const color = theme[name][circleName];
       return (
         <MySketchPicker
           key={circleName}
@@ -75,11 +70,10 @@ function Editor() {
     }
     return null;
   })
-
   return (
     <Root>
       <RootContent>
-        <SiteWrapper color={colors} layout>
+        <SiteWrapper color={theme[name].primary} layout>
           <ModalWindow/>
           <Site />
           {pickerColor}

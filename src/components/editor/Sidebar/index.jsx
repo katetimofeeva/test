@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import StyleIcon from '@mui/icons-material/Style';
 import { useSelector, useDispatch } from 'react-redux'
-import { createTheme } from '@mui/material/styles';
 import {TOGGLE_MODAL} from '../../../redux/constant'
 
 // Component Styles
@@ -9,6 +8,7 @@ const Root = styled.div`
   height: 100%;
   width: 100%;
 `;
+
 const WrapIcon = styled.div`
   height: 100%;
   display: flex;
@@ -24,24 +24,22 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
 `
-
 /** Sidebar view of the Editor page */
 function Sidebar() {
   const dispatch = useDispatch()
-  const colors = useSelector((state) => state.colors)
   const toggle = useSelector((state) => state.toggleModal)
   
-  const theme = createTheme({ colors});
-
+  const nameTheme = useSelector((state) => state.nameTheme)
+  const siteThemes = useSelector((state) => state.theme)
+  const colors =  siteThemes[nameTheme]
   function handleClick (){
     dispatch({type: TOGGLE_MODAL})
   }
-
   return( 
   <Root>
     <WrapIcon >
       <Icon onClick={handleClick} color={colors} toggle={toggle}>
-        <StyleIcon sx={{ color: theme.colors.secondary}}/>
+        <StyleIcon sx={{ color: colors.secondary}}/>
       </Icon>
     </WrapIcon>
   </Root>

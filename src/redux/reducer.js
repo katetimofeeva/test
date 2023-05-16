@@ -5,7 +5,6 @@ import {
     TOGGLE_MODAL, 
     SHOW_COLORS, 
     CHOOSE_COLOR_THEME} from './constant'
-
 const initialState={
     toggleModal: false,
     nameTheme: 'default',
@@ -14,12 +13,15 @@ const initialState={
         'primary': false,
         'secondary': false,
         'tertiary': false
-    }
+    },
+    theme: siteThemes
 }
+
 function reducer (state = initialState, action){
     switch (action.type){
         case TOGGLE_MODAL:
-            return {...state,
+            return {
+                ...state,
                 palitra: {
                     'primary': false,
                     'secondary': false,
@@ -33,8 +35,9 @@ function reducer (state = initialState, action){
         case CHOOSE_COLOR_THEME:
             return {
                 ...state,
-                colors: { ...state.colors, [action.payload.circleName]: action.payload.color }
-            };
+                nameTheme: 'custom',
+                theme: {...state.theme, 'custom': { ...state.colors, [action.payload.circleName]: action.payload.color }}
+            }
         case SHOW_COLORS:
             return {
                 ...state,
@@ -51,4 +54,3 @@ function reducer (state = initialState, action){
 }
 
 export default reducer
-
